@@ -20,5 +20,4 @@ ActiveRecord::Schema.define(version: 20170328082935) do
     t.string "translated_text"
     t.date   "review_date"
   end
-
 end
