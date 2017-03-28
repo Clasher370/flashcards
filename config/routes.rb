@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get '/' => 'flashcards#index'
+  root to: 'flashcards#index'
+  resources :cards
 end
