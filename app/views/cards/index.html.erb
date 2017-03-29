@@ -3,12 +3,18 @@
     <th>Original text</th>
     <th>Translated text</th>
     <th>Review date</th>
+    <th></th>
+    <th></th>
   </tr>
   <% @cards.each do |card| %>
     <tr>
       <td><%= card.original_text %></td>
       <td><%= card.translated_text %></td>
       <td><%= card.review_date.strftime("%d/%m/%Y") %></td>
+      <td><%= link_to 'Edit', edit_card_path(card) %></td>
+      <td><%= link_to 'Delete', card_path(card),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
