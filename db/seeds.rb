@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+page = Nokogiri::HTML(open("http://www.languagedaily.com/learn-german"))
+all_links = page.xpath('//*[@id="jsn-pos-mainmenu"]/div/div/div/ul/li[3]/ul/li/a/attribute::href')
+all_links.each do |link|
+  pages = Nokogiri::HTML(open("http://www.languagedaily.com#{link}"))
+  words = pages.xpath('//*[@id="jsn-mainbody"]/div[2]/div/div[1]/table/tbody/tr/child::td[2]
+                      |//*[@id="jsn-mainbody"]/div[2]/div/div[1]/table/tbody/tr/child::td[3]')
+  a = words.map{ |word|  word.text }
+  a.each_with_index do |e, i|
+    if i.even? && a[i + 1].size != 1 && e != 'German word  ' && e.downcase != a[i + 1].downcase
+      Card.create!(original_text: "#{e}", translated_text: "#{a[i + 1]}")
+    end
+  end
+end
