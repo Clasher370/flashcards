@@ -12,7 +12,7 @@ end
 
 def validate_words(original, translated)
   if original.downcase == translated.downcase ||
-  original == 'German word  ' || translated.size == 1
+     original == 'German word  ' || translated.size == 1
     false
   else
     true
@@ -27,7 +27,6 @@ links.each do |link|
                        '//*[@id="jsn-mainbody"]/div[2]/div/div[1]/table/tbody/tr/child::td').to_a
 
   words.in_groups_of(4) do |_, original, translation, _|
-
     if validate_words(original.text, translation.text)
       creating_card(original.text, translation.text)
     end
