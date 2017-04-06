@@ -4,14 +4,7 @@ class FlashcardsController < ApplicationController
   end
 
   def compare
-    check_card = CardChecker.call(params)
-
-    if check_card.success?
-      flash[:success] = "You gave correct answer!"
-      redirect_to root_path
-    else
-      flash[:danger] = "Your answer is #{params[:user_text]}, correct answer is #{params[:original_text]}"
-      redirect_to root_path
-    end
+    check_card = CheckTranslation.call(params)
+    redirect_to root_path, notice: check_card.notice
   end
 end
