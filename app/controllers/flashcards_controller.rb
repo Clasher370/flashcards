@@ -5,12 +5,10 @@ class FlashcardsController < ApplicationController
   end
 
   def compare
-    flashcard = CheckTranslation.new(params[:original_text], params[:user_text])
-    user_card = CardDateChanger.new(params[:id])
+    check_card = CardChecker.call(params)
 
-    if flashcard.compare
-      user_card.change_date
-      flash[:success] = "You gave the right answer"
+    if check_card.success?
+      flash[:success] = "You gave correct answer!"
       redirect_to root_path
     else
       flash[:danger] = "Your answer is #{params[:user_text]}, correct answer is #{params[:original_text]}"

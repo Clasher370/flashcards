@@ -1,4 +1,4 @@
-class CheckTranslation
+class CardCompare
   def initialize(original_text, user_text)
     @original_text = original_text
     @user_text = user_text
