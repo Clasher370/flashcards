@@ -9,20 +9,11 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar">
-      <div class="container">
-        <div class="navbar-header">
-          <%= link_to 'Флэшкарточкер', root_path, class: "navbar-brand" %>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Все карточки', cards_path %></li>
-            <li><%= link_to 'Добавить карточку', new_card_path %></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <%= render 'layouts/header' %>
     <div class="container">
+      <% flash.each do |name, msg| %>
+          <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+      <% end %>
       <div class="jumbotron">
         <%= yield %>
       </div>

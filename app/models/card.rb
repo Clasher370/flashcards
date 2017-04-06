@@ -4,6 +4,9 @@ class Card < ApplicationRecord
 
   before_validation :set_date
 
+  scope :with_ready_date, -> { where('review_date <= ?', Date.today) }
+  scope :random_one, -> { order('RANDOM()').first}
+
   private
 
   def set_date
