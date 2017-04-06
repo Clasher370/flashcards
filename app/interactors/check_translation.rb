@@ -14,6 +14,6 @@ class CheckTranslation
   private
 
   def compare_text(text_one, text_two)
-    true if text_one.downcase == text_two.downcase
+    text_one.downcase == text_two.downcase
   end
 end
