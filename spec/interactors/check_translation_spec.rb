@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 describe CheckTranslation do
 
   before do
