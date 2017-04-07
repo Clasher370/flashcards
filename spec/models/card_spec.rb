@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe Card, type: :model do
-
   context 'invalid' do
     it 'without original text' do
       card = build(:card, original_text: '')
