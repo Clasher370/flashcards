@@ -11,8 +11,7 @@ describe CheckTranslation do
   end
 
   it 'return negative notice if answer is incorrect' do
-    user_text = 'wrong translation'
-    @params[:user_text] = user_text
+    @params[:user_text] = 'wrong translation'
     check_card = CheckTranslation.call(@params)
     expect(check_card.notice).to include "Вы ответили неправильно."
   end
