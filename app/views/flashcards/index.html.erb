@@ -1,12 +1,14 @@
 <p>
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
-<div class="card">
-  <p>Переведите слово</p>
-  <p><%= @card.translated_text %></p>
-  <%= form_tag compare_path do %>
-      <%= hidden_field_tag :id, @card.id %>
-      <%= text_field_tag :user_text %>
-      <%= button_tag %>
-  <% end %>
-</div>
+<% if @card != [] %>
+  <div class="card">
+    <p>Переведите слово</p>
+    <p><%= @card.translated_text %></p>
+    <%= form_tag compare_path do %>
+        <%= hidden_field_tag :id, @card.id %>
+        <%= text_field_tag :user_text %>
+        <%= button_tag %>
+    <% end %>
+  </div>
+<% end %>

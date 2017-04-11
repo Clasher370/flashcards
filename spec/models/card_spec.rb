@@ -19,14 +19,13 @@ RSpec.describe Card, type: :model do
   end
 
   context 'valid' do
-    let!(:card) { build(:card) }
+    let!(:card) { create(:card) }
 
     it 'is valid with original, translated text and review date' do
       expect(card).to be_valid
     end
 
     it 'is set correct date' do
-      card.valid?
       expect(card.review_date).to eq Date.today + 3.days
     end
   end
