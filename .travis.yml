@@ -4,4 +4,4 @@ rvm:
 addons:
   postgresql: "9.4"
 before_script:
-  - cp co   nfig/database.yml.travis config/database.yml
+  - cp config/database.yml.travis config/database.yml
