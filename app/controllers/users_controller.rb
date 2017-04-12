@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(users_params)
     if @user.save
+      auto_login(@user)
       redirect_to root_path, notice: 'Вы зарегистрировались'
     else
       render :new
