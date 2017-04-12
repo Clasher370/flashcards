@@ -4,6 +4,8 @@ class Card < ApplicationRecord
 
   before_create :set_date
 
+  belongs_to :user
+
   scope :with_ready_date, -> { where('review_date <= ?', Date.today) }
   scope :random, -> { order('RANDOM()') }
 
