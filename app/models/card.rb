@@ -1,11 +1,11 @@
 class Card < ApplicationRecord
-  validates :original_text, :translated_text, :review_date, presence: true
+  validates :original_text, :translated_text, presence: true
   validate :text_should_be_differ
 
-  before_validation :set_date
+  before_create :set_date
 
   scope :with_ready_date, -> { where('review_date <= ?', Date.today) }
-  scope :random_one, -> { order('RANDOM()').first }
+  scope :random, -> { order('RANDOM()') }
 
   private
 

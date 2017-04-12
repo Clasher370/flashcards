@@ -5,9 +5,9 @@ class CheckTranslation
     card = Card.find(context.id)
     if compare_text(card.original_text, context.user_text)
       card.update(review_date: 3.days.since)
-      context.notice = "Вы ответили правильно."
+      context.notice = 'Вы ответили правильно.'
     else
-      context.notice = "Вы ответили неправильно."
+      context.notice = 'Вы ответили неправильно.'
     end
   end
 
