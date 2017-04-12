@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "CardLists", type: :feature do
-  context 'user can see list of cards' do
+RSpec.feature "Cards", type: :feature do
+  describe 'index' do
     before(:each) do
       create(:card)
       create(:card, original_text: 'Earth', translated_text: 'Земля')

@@ -5,7 +5,7 @@ class Card < ApplicationRecord
   before_create :set_date
 
   scope :with_ready_date, -> { where('review_date <= ?', Date.today) }
-  scope :random_one, -> { order('RANDOM()').first }
+  scope :random, -> { order('RANDOM()') }
 
   private
 

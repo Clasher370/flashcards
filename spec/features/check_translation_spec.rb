@@ -18,7 +18,7 @@ RSpec.feature "CheckTranslation", type: :feature do
     click_button 'Button'
     expect(page).to have_content 'Вы ответили правильно.'
   end
-  #it { expect(page).not_to have_content 'дом' }
+  # it { expect(page).not_to have_content 'дом' }
   # Не могу понять почему карта не проподает, вроде бы использую before(:all),
   # но все равно review_date откатывается на Date.yesterday.
   it 'wrong answer' do
