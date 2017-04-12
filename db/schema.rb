@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329073628) do
+ActiveRecord::Schema.define(version: 20170412073608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.string "original_text"
-    t.string "translated_text"
-    t.date   "review_date"
+    t.string  "original_text"
+    t.string  "translated_text"
+    t.date    "review_date"
+    t.integer "user_id"
     t.index ["original_text", "translated_text"], name: "index_cards_on_original_text_and_translated_text", unique: true, using: :btree
+    t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "cards", "users"
 end
