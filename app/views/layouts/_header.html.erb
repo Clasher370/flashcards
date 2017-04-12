@@ -7,6 +7,12 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Все карточки', cards_path %></li>
         <li><%= link_to 'Добавить карточку', new_card_path %></li>
+        <% if current_user %>
+          <li><%= link_to 'Выйти', :logout, method: :post %></li>
+        <% else %>
+          <li><%= link_to 'Зарегистрироваться', :signup %></li>
+          <li><%= link_to 'Войти', :login %></li>
+        <% end %>
       </ul>
     </div>
   </div>
