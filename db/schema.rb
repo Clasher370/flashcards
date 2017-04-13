@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20170412102636) do
     t.string  "translated_text"
     t.date    "review_date"
     t.integer "user_id"
-    t.index ["original_text", "translated_text"], name: "index_cards_on_original_text_and_translated_text", unique: true, using: :btree
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 

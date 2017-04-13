@@ -6,9 +6,11 @@ def parse_page(page, option)
   open_page(page).xpath(option)
 end
 
-def creat_card(original, translated)
-  Card.create(original_text: original, translated_text: translated)
+def creat_card(user, original, translated)
+  user.cards.create(original_text: original, translated_text: translated)
 end
+
+user = User.create(email: 'login', password: 'secret', password_confirmation: 'secret')
 
 links = parse_page('http://www.languagedaily.com/learn-german',
                    '//*[@id="jsn-pos-mainmenu"]/div/div/div/ul/li[3]/ul/li/a/attribute::href')
@@ -19,7 +21,7 @@ links.each do |link|
 
   words.in_groups_of(4) do |_, original, translation, _|
     if original.text != 'German word  '
-      creat_card(original.text, translation.text)
+      creat_card(user, original.text, translation.text)
     end
   end
 end
