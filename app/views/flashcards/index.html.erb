@@ -1,8 +1,14 @@
 <p>
   Первый в мире удобный менеджер флеш-карточек. Именно так.
 </p>
-<% if @card.nil? %>
-    Нет карточек для перевода
+<% if current_user %>
+  <% if @card.nil? %>
+      <p>Нет карточек на проверку</p>
+      <%= link_to 'Добавить карточку', new_card_path, class: 'btn btn-info' %>
+  <% else %>
+    <%= render 'form' %>
+  <% end %>
 <% else %>
-  <%= render 'form' %>
+  <%= link_to 'Зарегистрироваться', :signup, class: 'btn btn-info' %>
+  <%= link_to 'Войти', :login, class: 'btn btn-info' %>
 <% end %>

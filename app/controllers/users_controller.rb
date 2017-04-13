@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update]
+
   def new
     @user = User.new
+  end
+
+  def edit
   end
 
   def create
@@ -13,7 +18,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(users_params)
+      redirect_back_or_to root_path
+    else
+      render 'edit'
+    end
+  end
+
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def users_params
     params.require(:user).permit(:email, :password, :password_confirmation)

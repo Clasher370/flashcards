@@ -25,3 +25,7 @@ links.each do |link|
     end
   end
 end
+
+user.cards.each do |card|
+  card.update(review_date: Date.yesterday)
+end
