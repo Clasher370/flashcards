@@ -13,8 +13,8 @@ RSpec.feature "Authenrication", type: :feature do
 
   context 'login and logout' do
     before do
-      user = create(:user)
-      login(user.email, user.password)
+      create(:user)
+      login
     end
 
     it { expect(page).to have_content 'Успешный вход' }

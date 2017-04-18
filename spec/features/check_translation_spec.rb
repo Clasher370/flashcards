@@ -13,7 +13,7 @@ RSpec.feature "CheckTranslation", type: :feature do
   end
 
   before do
-    login(@user.email, @user.password)
+    login
   end
 
   it { expect(page).to have_content 'Первый в мире' }

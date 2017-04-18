@@ -4,7 +4,7 @@ RSpec.feature "Cards", type: :feature do
   describe 'index' do
     before(:each) do
       user = create(:user)
-      login(user.email, user.password)
+      login
       create(:card, user_id: user.id)
       create(:card, original_text: 'Earth', translated_text: 'Земля', user_id: user.id)
       visit root_path
