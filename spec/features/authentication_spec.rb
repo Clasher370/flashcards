@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Authenrication", type: :feature do
   it 'signin' do
-    visit root_path
-    first(:link, 'Зарегистрироваться').click
+    visit signup_path
     fill_in 'Email', with: 'email@example.com'
     fill_in 'Password', with: 'secret'
     fill_in 'Password confirmation', with: 'secret'
@@ -21,7 +20,7 @@ RSpec.feature "Authenrication", type: :feature do
 
     it 'logout' do
       click_link 'Выйти'
-      expect(page).to have_content 'Вы вышли!'
+      expect(page).to have_content 'Войти'
     end
   end
 end
