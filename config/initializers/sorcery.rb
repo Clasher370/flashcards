@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:external]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -66,7 +66,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack] .
   # Default: `[]`
   #
-  # config.external_providers =
+  config.external_providers = [:twitter]
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -98,18 +98,22 @@ Rails.application.config.sorcery.configure do |config|
   # Twitter will not accept any requests nor redirect uri containing localhost,
   # make sure you use 0.0.0.0:3000 to access your app in development
   #
-  # config.twitter.key = ""
-  # config.twitter.secret = ""
-  # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
-  # config.twitter.user_info_mapping = {:email => "screen_name"}
-  #
-  # config.facebook.key = ""
-  # config.facebook.secret = ""
+  config.twitter.key = ENV['TWITTER_KEY']
+  config.twitter.secret = ENV['TWITTER_SECRET_KEY']
+  config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
+  config.twitter.user_info_mapping = {:email => "screen_name"}
+
+  # config.facebook.key = ENV['FACEBOOK_KEY']
+  # config.facebook.secret = ENV['FACEBOOK_SECRET_KEY']
   # config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  # config.facebook.user_info_mapping = {:email => "name"}
-  # config.facebook.access_permissions = ["email", "publish_actions"]
-  # config.facebook.display = "page"
-  # config.facebook.api_version = "v2.2"
+  # config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username", :hometown => "hometown/name"}
+  # config.facebook.scope = "email"
+  # config.facebook.display = "popup"
+  #
+  # config.vk.key = ENV['VK_KEY']
+  # config.vk.secret = ENV['VK_SECRET_KEY']
+  # config.vk.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=vk"
+  # config.vk.user_info_mapping = {:login => "domain", :name => "full_name"}
   #
   # config.github.key = ""
   # config.github.secret = ""
@@ -141,10 +145,6 @@ Rails.application.config.sorcery.configure do |config|
   # config.microsoft.user_info_mapping = {:email => "userPrincipalName", :username => "displayName"}
   # config.microsoft.scope = "openid email https://graph.microsoft.com/User.Read"
   #
-  # config.vk.key = ""
-  # config.vk.secret = ""
-  # config.vk.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=vk"
-  # config.vk.user_info_mapping = {:login => "domain", :name => "full_name"}
   #
   # config.slack.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=slack"
   # config.slack.key = ''
@@ -424,7 +424,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in authentications class.
     # Default: `:user_id`
