@@ -10,25 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412073608) do
+ActiveRecord::Schema.define(version: 20170417091457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid", using: :btree
+  end
 
   create_table "cards", force: :cascade do |t|
     t.string  "original_text"
     t.string  "translated_text"
     t.date    "review_date"
     t.integer "user_id"
-    t.index ["original_text", "translated_text"], name: "index_cards_on_original_text_and_translated_text", unique: true, using: :btree
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",            null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
   add_foreign_key "cards", "users"
