@@ -20,3 +20,9 @@
     padding: 30px;
     border-radius: 6px;
 }
+
+.card .card_image {
+    margin-bottom: 20px;
+    border-radius: inherit;
+    border: inherit;
+}

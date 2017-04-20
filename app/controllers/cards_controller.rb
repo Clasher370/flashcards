@@ -19,7 +19,7 @@ class CardsController < ApplicationController
     @card = current_user.cards.build(card_params)
 
     if @card.save
-      redirect_to cards_path
+      redirect_to cards_path, notice: 'Новая карта создана'
     else
       render 'new'
     end
@@ -46,6 +46,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :image, :remote_image_url)
   end
 end
