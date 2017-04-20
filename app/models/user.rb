@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :cards
+  has_many :cards, dependent: :destroy
 
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication

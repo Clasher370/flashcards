@@ -21,7 +21,7 @@
     border-radius: 6px;
 }
 
-.card .image {
+.card .card_image {
     margin-bottom: 20px;
     border-radius: inherit;
     border: inherit;

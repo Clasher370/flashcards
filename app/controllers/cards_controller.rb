@@ -19,7 +19,7 @@ class CardsController < ApplicationController
     @card = current_user.cards.build(card_params)
 
     if @card.save
-      redirect_to cards_path
+      redirect_to cards_path, notice: 'Новая карта создана'
     else
       render 'new'
     end
