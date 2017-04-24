@@ -4,7 +4,7 @@ class Card < ApplicationRecord
 
   before_create :set_date
 
-  belongs_to :user
+  belongs_to :deck
 
   mount_uploader :image, ImageUploader
 
