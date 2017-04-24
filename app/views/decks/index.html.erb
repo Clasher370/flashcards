@@ -3,10 +3,26 @@
 <table class="table">
   <tr>
     <th>Название колоды</th>
+    <th>Текущая</th>
   </tr>
   <% @decks.each do |deck| %>
     <tr>
       <td><%= deck.name %></td>
+      <% if deck.current %>
+        <td>
+          <%= form_tag current_path do %>
+            <%= hidden_field_tag :id, deck.id %>
+            <%= button_tag 'Выкл' %>
+          <% end %>
+        </td>
+      <% else %>
+        <td>
+          <%= form_tag current_path do %>
+            <%= hidden_field_tag :id, deck.id %>
+            <%= button_tag 'Вкл' %>
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

@@ -52,7 +52,7 @@ class CardsController < ApplicationController
   end
 
   def require_deck
-    unless current_user.deck.empty?
+    if current_user.decks.empty?
       redirect_to new_deck_path, notice: 'Необходимо создать колоду'
     end
   end
