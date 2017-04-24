@@ -1,0 +1,12 @@
+<p>Все колоды</p>
+
+<table class="table">
+  <tr>
+    <th>Название колоды</th>
+  </tr>
+  <% @decks.each do |deck| %>
+    <tr>
+      <td><%= deck.name %></td>
+    </tr>
+  <% end %>
+</table>

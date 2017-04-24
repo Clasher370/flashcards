@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :require_deck, only: [:new]
 
   def index
     @cards = current_user.cards
@@ -10,6 +11,7 @@ class CardsController < ApplicationController
 
   def new
     @card = current_user.cards.build
+    @decks = current_user.decks
   end
 
   def edit
@@ -46,6 +48,12 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :image, :remote_image_url)
+    params.require(:card).permit(:deck_id, :original_text, :translated_text, :review_date, :image, :remote_image_url)
+  end
+
+  def require_deck
+    unless current_user.deck.empty?
+      redirect_to new_deck_path, notice: 'Необходимо создать колоду'
+    end
   end
 end

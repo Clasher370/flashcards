@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :users
   resources :cards
+  resources :decks
 
   root to: 'flashcards#index'
   post 'compare' => 'flashcards#compare'
