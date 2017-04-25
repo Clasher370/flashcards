@@ -4,10 +4,9 @@ RSpec.feature "Decks", type: :feature do
   context 'create deck' do
     let(:user) { create(:user) }
     before { login(user.email, 'secret') }
-    before { visit root_path}
+    before { visit root_path }
 
     it { expect(page).to have_content 'Нет карточек на проверку' }
-
 
     context 'not create card without deck' do
       before { first(:link, 'Добавить карточку').click }
@@ -31,8 +30,8 @@ RSpec.feature "Decks", type: :feature do
           click_button
         end
 
-        it { expect(page).to have_content 'Новая колода создана'}
-        it { expect(page).to have_content 'NewDeck'}
+        it { expect(page).to have_content 'Новая колода создана' }
+        it { expect(page).to have_content 'NewDeck' }
       end
     end
   end
@@ -50,19 +49,19 @@ RSpec.feature "Decks", type: :feature do
       context 'set' do
         before { first(:button, 'Вкл').click }
 
-        it { expect(page).to have_content "Текущая колода #{ user.decks.first.name }"  }
+        it { expect(page).to have_content "Текущая колода #{ user.decks.first.name }" }
         it { expect(page).to have_button 'Выкл' }
 
         context 'unset' do
-          before { click_button 'Выкл'}
+          before { click_button 'Выкл' }
 
           it { expect(page).to have_content 'Нет текущих колод' }
         end
 
         context 'set another' do
           before { first(:button, 'Вкл').click }
-          it { expect(page).to have_content "Текущая колода #{ user.decks.second.name }"  }
-          it { expect(page).to(have_button 'Вкл', count: 4) }
+          it { expect(page).to have_content "Текущая колода #{user.decks.second.name}" }
+          it { expect(page).to have_button('Вкл', count: 4) }
         end
 
         context 'show current deck cards only' do

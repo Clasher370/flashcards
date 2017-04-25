@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "CheckTranslation", type: :feature do
-  let(:card) { create(:card)}
+  let(:card) { create(:card) }
 
   context 'card on index' do
     before do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe SetCurrentDeck do
-  let(:deck) { create(:deck)}
+  let(:deck) { create(:deck) }
 
   context 'current' do
     before { @params = { id: deck.id } }

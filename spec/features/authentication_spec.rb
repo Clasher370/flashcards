@@ -17,10 +17,10 @@ RSpec.feature "Authenrication", type: :feature do
     end
 
     it { expect(page).to have_content 'Вы зарегистрировались' }
-    it { expect(page).to have_content 'email@example.com'}
+    it { expect(page).to have_content 'email@example.com' }
 
     context 'user can' do
-      before { click_link 'Выйти'}
+      before { click_link 'Выйти' }
 
       it 'logout' do
         expect(page).to have_content 'Вы вышли!'
