@@ -1,7 +1,6 @@
-def login
+def login(email, password)
   visit login_path
-  first(:link, 'Войти').click
-  fill_in :user_session_email, with: 'email@example.com'
-  fill_in :user_session_password, with: 'secret'
+  fill_in :user_session_email, with: email
+  fill_in :user_session_password, with: password
   click_button 'Войти'
 end

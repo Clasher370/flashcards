@@ -15,6 +15,11 @@ RSpec.describe Card, type: :model do
       expect(card).to_not be_valid
     end
 
+    it 'without deck' do
+      card.deck_id = ''
+      expect(card).to_not be_valid
+    end
+
     it 'with same text' do
       card.translated_text = 'HoMe'
       card.valid?

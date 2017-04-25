@@ -29,7 +29,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to cards_path
+      redirect_to cards_path, notice: 'Карта изменена'
     else
       render 'edit'
     end
@@ -38,7 +38,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
 
-    redirect_to cards_path
+    redirect_to cards_path, notice: 'Карта удалена'
   end
 
   private

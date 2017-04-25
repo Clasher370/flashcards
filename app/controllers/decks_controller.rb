@@ -15,7 +15,7 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.build(deck_params)
     if @deck.save
-      redirect_to decks_path
+      redirect_to decks_path, notice: 'Новая колода создана'
     else
       render 'new'
     end

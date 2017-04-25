@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Deck, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'invalid without name' do
+    deck = build(:deck)
+    expect(deck).to be_valid
+  end
 end
