@@ -10,7 +10,7 @@ RSpec.feature "CheckTranslation", type: :feature do
     context 'nothing to check' do
       before { visit root_path }
 
-      it { expect(page).to have_content 'Нет карточек на проверку'}
+      it { expect(page).to have_content 'Нет карточек на проверку' }
     end
 
     context 'ready to check' do
