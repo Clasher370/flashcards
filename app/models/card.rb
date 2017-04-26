@@ -5,12 +5,12 @@ class Card < ApplicationRecord
   before_create :set_date
 
   belongs_to :deck
+  belongs_to :user
 
   mount_uploader :image, ImageUploader
 
   scope :with_ready_date, (-> { where('review_date <= ?', Date.today) })
   scope :random, (-> { order('RANDOM()') })
-  scope :deck_name, (-> { order(:deck_id)})
 
   private
 

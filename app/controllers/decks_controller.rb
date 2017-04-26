@@ -1,6 +1,6 @@
 class DecksController < ApplicationController
   def index
-    @decks = current_user.decks.to_create_date
+    @decks = current_user.decks.by_create_date
   end
 
   def new

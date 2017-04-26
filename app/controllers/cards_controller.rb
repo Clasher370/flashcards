@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   before_action :require_deck, only: [:new]
 
   def index
-    @cards = current_user.cards.deck_name
+    @cards = current_user.cards
   end
 
   def show
