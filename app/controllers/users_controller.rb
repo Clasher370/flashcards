@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @decks = current_user.decks
   end
 
   def create
@@ -35,6 +36,6 @@ class UsersController < ApplicationController
   end
 
   def users_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)
   end
 end

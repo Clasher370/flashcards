@@ -1,6 +1,7 @@
 class FlashcardsController < ApplicationController
   def index
-    @card = current_user.cards.with_ready_date.random.first
+    random = SetRandomCard.call(user: current_user)
+    @card = random.card
   end
 
   def compare

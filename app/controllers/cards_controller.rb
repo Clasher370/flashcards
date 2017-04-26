@@ -10,9 +10,11 @@ class CardsController < ApplicationController
 
   def new
     @card = current_user.cards.build
+    @decks = current_user.decks
   end
 
   def edit
+    @decks = current_user.decks
   end
 
   def create
@@ -27,7 +29,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to cards_path
+      redirect_to cards_path, notice: 'Карта изменена'
     else
       render 'edit'
     end
@@ -36,7 +38,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
 
-    redirect_to cards_path
+    redirect_to cards_path, notice: 'Карта удалена'
   end
 
   private
@@ -46,6 +48,12 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :image, :remote_image_url)
+    params.require(:card).permit(:deck_id, :original_text, :translated_text, :review_date, :image, :remote_image_url)
+  end
+
+  def require_deck
+    if current_user.decks.empty?
+      redirect_to new_deck_path, notice: 'Необходимо создать колоду'
+    end
   end
 end

@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe CheckTranslation do
   before do
     @card = create(:card)

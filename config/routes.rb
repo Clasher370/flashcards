@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :users
   resources :cards
+  resources :decks
 
   root to: 'flashcards#index'
   post 'compare' => 'flashcards#compare'
@@ -17,4 +18,6 @@ Rails.application.routes.draw do
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
+  post 'current' => 'decks#current_deck'
 end
