@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :decks, dependent: :destroy
-  has_many :cards, through: :decks
-
+  has_many :cards
+  belongs_to :current_deck, class_name: 'Deck'
 
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
