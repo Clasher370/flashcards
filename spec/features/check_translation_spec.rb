@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature "CheckTranslation", type: :feature do
-  let(:card) { create(:card) }
+  let(:user) { create(:user) }
+  let(:card) { create(:card, user_id: user.id) }
 
   context 'card on index' do
     before do
-      login(card.deck.user.email, 'secret')
+      login(user.email, 'secret')
       card.update(review_date: Date.yesterday)
       visit root_path
     end

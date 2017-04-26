@@ -13,7 +13,7 @@ RSpec.feature "Authenrication", type: :feature do
       fill_in 'Email', with: 'email@example.com'
       fill_in 'Password', with: 'secret'
       fill_in 'Password confirmation', with: 'secret'
-      click_button 'Зарегистрироваться'
+      click_button
     end
 
     it { expect(page).to have_content 'Вы зарегистрировались' }

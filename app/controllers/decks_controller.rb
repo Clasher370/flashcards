@@ -7,11 +7,6 @@ class DecksController < ApplicationController
     @deck = current_user.decks.build
   end
 
-  def current_deck
-    set_deck = SetCurrentDeck.call(params)
-    redirect_to decks_path, notice: set_deck.notice
-  end
-
   def create
     @deck = current_user.decks.build(deck_params)
     if @deck.save
@@ -27,3 +22,4 @@ class DecksController < ApplicationController
     params.require(:deck).permit(:name, :id)
   end
 end
+
