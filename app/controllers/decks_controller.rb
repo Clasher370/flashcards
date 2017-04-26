@@ -22,4 +22,3 @@ class DecksController < ApplicationController
     params.require(:deck).permit(:name, :id)
   end
 end
-

@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
-  before_action :require_deck, only: [:new]
 
   def index
     @cards = current_user.cards
@@ -15,6 +14,7 @@ class CardsController < ApplicationController
   end
 
   def edit
+    @decks = current_user.decks
   end
 
   def create

@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature 'Cards', type: :feature do
-  describe 'new' do
+  describe 'create' do
     before do
       @user = create(:user)
       @deck = @user.decks.create(name: 'Colors')
       login(@user.email, 'secret')
       visit new_card_path
+      select 'Colors', from: 'Deck'
       fill_in 'Original text', with: 'white'
       fill_in 'Translated text', with: 'белый'
       attach_file :card_image, 'app/assets/images/test_image.jpg'
@@ -19,19 +20,17 @@ RSpec.feature 'Cards', type: :feature do
       expect(page).to have_content 'Colors'
     end
 
-    context 'card with image on index' do
+    context 'have image' do
       before do
         @card = @user.cards.first
         @card.update(review_date: Date.yesterday)
+        visit root_path
       end
 
-      it 'random card have image' do
-        visit root_path
-        expect(page).to have_css('img.card_image', count: 1)
-      end
+      it { expect(page).to have_css('img.card_image', count: 1) }
     end
 
-    context 'edit and delete card' do
+    context 'edit and delete' do
       before do
         visit cards_path
       end

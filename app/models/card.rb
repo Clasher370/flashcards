@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
-  validates :original_text, :translated_text, :deck_id, presence: true
+  validates :original_text, :translated_text, presence: true
   validate :text_should_be_differ
 
   before_create :set_date

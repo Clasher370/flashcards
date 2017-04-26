@@ -3,29 +3,24 @@ require 'rails_helper'
 RSpec.feature "Decks", type: :feature do
   let(:user) { create(:user) }
 
-  context 'create deck' do
-    before { login(user.email, 'secret') }
-    before { visit root_path }
+  context 'create' do
+    before do
+      login(user.email, 'secret')
+      visit root_path
+    end
 
     it { expect(page).to have_content 'Нет карточек на проверку' }
-
-    context 'not create card without deck' do
-      before { first(:link, 'Добавить карточку').click }
-
-      it { expect(page).to have_content 'Необходимо создать колоду' }
-    end
 
     context 'use form' do
       before { click_link 'Добавить колоду' }
 
-      context 'try to create' do
-        it 'without name' do
-          click_button
-          expect(page).to have_content "can't be blank"
-        end
+      context 'without name' do
+        before { click_button }
+
+        it { expect(page).to have_content "can't be blank" }
       end
 
-      context 'creating' do
+      context 'with name' do
         before do
           fill_in 'Name', with: 'NewDeck'
           click_button
@@ -35,5 +30,5 @@ RSpec.feature "Decks", type: :feature do
         it { expect(page).to have_content 'NewDeck' }
       end
     end
-  end	
+  end
 end

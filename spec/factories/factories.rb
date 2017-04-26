@@ -8,16 +8,6 @@ FactoryGirl.define do
     sequence(:email) { |n| "email#{n}@example.com" }
     password 'secret'
     password_confirmation 'secret'
-
-    factory :user_with_decks do
-      transient do
-        decks_count 5
-      end
-
-      after(:create) do |user, evaluator|
-        create_list(:deck, evaluator.decks_count, user: user)
-      end
-    end
   end
 
   factory :card do

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170426070232) do
     t.string  "translated_text"
     t.date    "review_date"
     t.string  "image"
-    t.integer "deck_id",         null: false
+    t.integer "deck_id"
     t.integer "user_id"
     t.index ["deck_id"], name: "index_cards_on_deck_id", using: :btree
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
