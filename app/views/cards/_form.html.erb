@@ -2,6 +2,7 @@
     <%= f.input :deck_id, collection: @decks %>
     <%= f.input :original_text %>
     <%= f.input :translated_text %>
+    <%= f.input :review_date unless @card.new_record? %>
     <%= f.input :image, as: :file %>
     <%= f.input :remote_image_url %>
     <%= f.button :submit %>
