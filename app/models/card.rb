@@ -15,7 +15,7 @@ class Card < ApplicationRecord
   private
 
   def set_date
-    self.review_date = Date.today
+    self.review_date = Time.now
   end
 
   def text_should_be_differ
