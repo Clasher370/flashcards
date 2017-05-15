@@ -24,6 +24,6 @@ RSpec.describe Card, type: :model do
 
   it 'is set correct date' do
     card = create(:card)
-    expect(card.review_date).to eq Date.today + 3.days
+    expect(card.review_date).to eq Date.today
   end
 end

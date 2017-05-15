@@ -15,7 +15,7 @@ class Card < ApplicationRecord
   private
 
   def set_date
-    self.review_date = Date.today + 3.days
+    self.review_date = Date.today
   end
 
   def text_should_be_differ
