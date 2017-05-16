@@ -2,20 +2,24 @@ class Card < ApplicationRecord
   validates :original_text, :translated_text, presence: true
   validate :text_should_be_differ
 
-  before_create :set_date
+  before_create :set_date, :set_stage
 
   belongs_to :deck
   belongs_to :user
 
   mount_uploader :image, ImageUploader
 
-  scope :with_ready_date, (-> { where('review_date <= ?', Date.today) })
+  scope :with_ready_date, (-> { where('review_date <= ?', Time.now) })
   scope :random, (-> { order('RANDOM()') })
 
   private
 
   def set_date
     self.review_date = Time.now
+  end
+
+  def set_stage
+    self.review_stage = 'first'
   end
 
   def text_should_be_differ
