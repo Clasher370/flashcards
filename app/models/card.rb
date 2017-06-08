@@ -19,7 +19,7 @@ class Card < ApplicationRecord
   end
 
   def set_stage
-    self.review_stage = 'first'
+    self.review_stage = 1
   end
 
   def text_should_be_differ
