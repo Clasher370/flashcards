@@ -47,7 +47,7 @@ class CheckTranslation
   end
 
   def change_context(message, try = nil, model = nil)
-    context.card = model ? model.id : model
+    context.card = model.id if model
     context.session_try = try
     context.notice = message
   end

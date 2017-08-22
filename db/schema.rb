@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170516112951) do
     t.string   "image"
     t.integer  "deck_id"
     t.integer  "user_id"
-    t.integer  "review_stage"
+    t.integer  "review_stage",    default: 1
     t.index ["deck_id"], name: "index_cards_on_deck_id", using: :btree
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end

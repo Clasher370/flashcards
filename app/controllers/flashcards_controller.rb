@@ -1,14 +1,14 @@
 class FlashcardsController < ApplicationController
   def index
-    set_card = SetCardOnIndex.call(user: current_user, session: session[:flashcards_card])
+    set_card = SetCardOnIndex.call(user: current_user, session: session[:card])
     @card = set_card.card
-    @try = session[:flashcards_try]
+    @try = session[:try]
   end
 
   def compare
     check_card = CheckTranslation.call(params)
-    session[:flashcards_card] = check_card.card
-    session[:flashcards_try] = check_card.session_try
+    session[:card] = check_card.card
+    session[:try] = check_card.session_try
     redirect_to root_path, notice: check_card.notice
   end
 end

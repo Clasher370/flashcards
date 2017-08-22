@@ -15,7 +15,6 @@ class CardsController < ApplicationController
 
   def edit
     @decks = current_user.decks
-    @stage = [*1..5]
   end
 
   def create

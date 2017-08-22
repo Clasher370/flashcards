@@ -2,7 +2,7 @@ class Card < ApplicationRecord
   validates :original_text, :translated_text, presence: true
   validate :text_should_be_differ
 
-  before_create :set_date, :set_stage
+  before_create :set_date
 
   belongs_to :deck
   belongs_to :user
@@ -16,10 +16,6 @@ class Card < ApplicationRecord
 
   def set_date
     self.review_date = Time.now
-  end
-
-  def set_stage
-    self.review_stage = 1
   end
 
   def text_should_be_differ
