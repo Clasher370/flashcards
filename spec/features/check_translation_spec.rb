@@ -39,4 +39,3 @@ RSpec.feature "CheckTranslation", type: :feature do
     end
   end
 end
-

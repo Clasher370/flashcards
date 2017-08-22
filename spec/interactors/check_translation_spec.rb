@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe CheckTranslation do
   describe '#call' do
-    let(:card) {create(:card)}
+    let(:card) { create(:card) }
     let(:params) { { id: card.id, user_text: 'home', session_try: '' } }
     let(:check) { @check_card = CheckTranslation.call(params) }
 
@@ -18,7 +18,7 @@ describe CheckTranslation do
           before { card.reload }
 
           it { expect_review_date_eq(card, 12.hour.since) }
-          it { expect(card.review_stage.to_i).to eq 2}
+          it { expect(card.review_stage.to_i).to eq 2 }
         end
       end
 
