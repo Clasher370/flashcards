@@ -3,7 +3,7 @@ class CheckTranslation
 
   def call
     card = Card.find(context.id)
-    if compare_text(card.original_text, context.user_text).zero?
+    if compare_text(card.original_text, context.user_text)
       change_time_and_stage(card)
     else
       try_card(card)
@@ -13,8 +13,7 @@ class CheckTranslation
   private
 
   def compare_text(text_one, text_two)
-    levenshtein = DamerauLevenshtein
-    levenshtein.distance(text_one.downcase, text_two.downcase, 0)
+    DamerauLevenshtein.distance(text_one.downcase, text_two.downcase, 0).zero?
   end
 
   def change_time_and_stage(card)
