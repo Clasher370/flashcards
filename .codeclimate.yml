@@ -12,6 +12,11 @@ engines:
     config:
     	languages:
       - ruby
+ratings:
+  paths:
+  - app/**
+  - lib/**
+  - "**.rb"
 exclude_paths:
 - 'app/assets/javascripts/bootstrap.js'
 - 'app/assets/stylesheets/bootstrap.css'
