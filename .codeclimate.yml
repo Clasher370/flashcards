@@ -1,0 +1,17 @@
+engines:
+  rubocop:
+    enabled: true
+  golint:
+   	enabled: false
+  eslint:
+    enabled: false
+  csslint:
+    enabled: false
+  duplication:
+  	enabled: true
+    config:
+    	languages:
+      - ruby
+exclude_paths:
+- 'app/assets/javascripts/bootstrap.js'
+- 'app/assets/stylesheets/bootstrap.css'
