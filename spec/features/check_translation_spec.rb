@@ -23,17 +23,17 @@ RSpec.feature "CheckTranslation", type: :feature do
     context 'enter wrong or empty answer' do
       it 'first time, left 2 try' do
         click_button 'Button'
-        expect(page).to have_content 'Вы ответили неправильно. Осталось 2 попытки.'
+        expect(page).to have_content 'У Вас осталась 2 попытки.'
       end
 
       it 'second time, left 1 try' do
         2.times { click_button 'Button' }
-        expect(page).to have_content 'Вы ответили неправильно. Осталось 1 попытки.'
+        expect(page).to have_content 'У Вас осталась 1 попытки.'
       end
 
       it 'third time, another card for check' do
         3.times { click_button 'Button' }
-        expect(page).not_to have_content 'Вы ответили неправильно. Осталось'
+        expect(page).to have_content 'Вы ответили неправильно.'
         expect(page).not_to have_content 'дом'
       end
     end
