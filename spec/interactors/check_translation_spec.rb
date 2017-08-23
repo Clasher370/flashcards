@@ -10,7 +10,7 @@ describe CheckTranslation do
       context 'correct' do
         before { check }
 
-        it { expect(@check_card.notice).to include "Вы ответили правильно." }
+        it { expect(@check_card.notice).to match(/Вы ответили правильно./) }
         it { expect(@check_card.session_try).to be_nil }
         it { expect(@check_card.card).to be_nil }
 
@@ -28,7 +28,7 @@ describe CheckTranslation do
           check
         end
 
-        it { expect(@check_card.notice).to include 'Вы ответили неправильно. Осталось 2 попытки' }
+        it { expect(@check_card.notice).to match(/Ваш ответ wrong translation неправильный./)}
         it { expect(@check_card.session_try).to eq 1 }
         it { expect(@check_card.card).to eq card.id }
       end

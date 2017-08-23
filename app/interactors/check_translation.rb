@@ -3,7 +3,7 @@ class CheckTranslation
 
   def call
     card = Card.find(context.id)
-    if compare_text(card.original_text, context.user_text)
+    if compare_text(card.original_text, context.user_text).zero?
       change_time_and_stage(card)
     else
       try_card(card)
@@ -13,7 +13,8 @@ class CheckTranslation
   private
 
   def compare_text(text_one, text_two)
-    text_one.downcase == text_two.downcase
+    levenshtein = DamerauLevenshtein
+    levenshtein.distance(text_one.downcase, text_two.downcase, 0)
   end
 
   def change_time_and_stage(card)
@@ -29,17 +30,19 @@ class CheckTranslation
   def try_card(card)
     try = context.session_try
     if try == ''
-      change_context(message(2), 1, card)
+      change_context(message(2, card, context.user_text), 1, card)
     elsif try == '1'
-      change_context(message(1), 2, card)
+      change_context(message(1, card, context.user_text), 2, card)
     elsif try == '2'
       change_context('Вы ответили неправильно.')
       update_args_of(card, 12.hour.since, 1)
     end
   end
 
-  def message(try)
-    "Вы ответили неправильно. Осталось #{try} попытки."
+  def message(try, card, user_text)
+    "Ваш ответ #{user_text} неправильный.
+    Правильный ответ #{card.original_text} с переводом #{card.translated_text}.
+    У Вас осталась #{try} попытки."
   end
 
   def update_args_of(model, time, stage)
