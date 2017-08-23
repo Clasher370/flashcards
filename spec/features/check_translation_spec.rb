@@ -1,45 +1,40 @@
 require 'rails_helper'
 
 RSpec.feature "CheckTranslation", type: :feature do
-  let(:user) { create(:user) }
-  let(:card) { create(:card, user_id: user.id) }
+  let(:card) { create(:card) }
 
-  context 'on index' do
-    before { login(user.email, 'secret') }
+  describe 'root page' do
+    before { login(card.user.email, 'secret') }
 
-    context 'nothing to check' do
-      before { visit root_path }
+    it { expect(page).to have_content 'Первый в мире' }
+    it { expect(page).to have_content 'Переведите слово' }
+    it { expect(page).to have_content 'дом' }
 
-      it { expect(page).to have_content 'Нет карточек на проверку' }
+    context 'enter answer and click button' do
+      before do
+        fill_in :user_text, with: 'home'
+        click_button 'Button'
+      end
+
+      it { expect(page).to have_content 'Вы ответили правильно.' }
+      it { expect(page).not_to have_content 'дом' }
     end
 
-    context 'ready to check' do
-      before do
-        card.update(review_date: Date.yesterday)
-        visit root_path
+    context 'enter wrong or empty answer' do
+      it 'first time, left 2 try' do
+        click_button 'Button'
+        expect(page).to have_content 'Вы ответили неправильно. Осталось 2 попытки.'
       end
 
-      it { expect(page).to have_content 'Первый в мире' }
-      it { expect(page).to have_content 'Переведите слово' }
-      it { expect(page).to have_content 'дом' }
-
-      context 'right answer' do
-        before do
-          fill_in :user_text, with: 'home'
-          click_button 'Button'
-        end
-
-        it { expect(page).to have_content 'Вы ответили правильно.' }
-        it { expect(page).not_to have_content 'дом' }
+      it 'second time, left 1 try' do
+        2.times { click_button 'Button' }
+        expect(page).to have_content 'Вы ответили неправильно. Осталось 1 попытки.'
       end
 
-      context 'wrong answer' do
-        before do
-          fill_in :user_text, with: 'NOhome'
-          click_button 'Button'
-        end
-
-        it { expect(page).to have_content 'Вы ответили неправильно.' }
+      it 'third time, another card for check' do
+        3.times { click_button 'Button' }
+        expect(page).not_to have_content 'Вы ответили неправильно. Осталось'
+        expect(page).not_to have_content 'дом'
       end
     end
   end

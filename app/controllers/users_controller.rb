@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
-  before_action :set_user, only: [:edit, :update]
-
   def new
     @user = User.new
   end
@@ -22,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(users_params)
+    if current_user.update(users_params)
       redirect_back_or_to root_path
     else
       render 'edit'
@@ -30,10 +28,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def users_params
     params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)

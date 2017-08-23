@@ -9,13 +9,13 @@ class Card < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  scope :with_ready_date, (-> { where('review_date <= ?', Date.today) })
+  scope :with_ready_date, (-> { where('review_date <= ?', Time.now) })
   scope :random, (-> { order('RANDOM()') })
 
   private
 
   def set_date
-    self.review_date = Date.today + 3.days
+    self.review_date = Time.now
   end
 
   def text_should_be_differ
