@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CardsMailer, type: :mailer do
+describe CardsMailer do
   let(:user) { create(:user) }
   let(:mail) { described_class.pending_cards_notification(user).deliver_now }
 
