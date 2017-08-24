@@ -1,0 +1,8 @@
+class CardsMailer < ApplicationMailer
+  default from: 'notifications@example.com'
+
+  def pending_cards_notification(user)
+    @user = user
+    mail(to: @user.email, subject: 'Пора проверять карты!')
+  end
+end
