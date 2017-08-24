@@ -1,3 +1,4 @@
+# app/mailers/cards_mailer.rb
 class CardsMailer < ApplicationMailer
   default from: 'notifications@example.com'
 
