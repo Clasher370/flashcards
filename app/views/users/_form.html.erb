@@ -1,5 +1,6 @@
 <%= simple_form_for @user do |f| %>
     <%= f.input :email %>
+    <%= f.input :locale, collection: I18n.available_locales %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
     <%= f.input :current_deck_id, collection: @decks if @decks %>
