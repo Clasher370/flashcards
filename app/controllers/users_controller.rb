@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
     if @user.save
       auto_login(@user)
-      redirect_to root_path, notice: 'Вы зарегистрировались'
+      redirect_to root_path, notice: t('.success')
     else
       render :new
     end

@@ -1,0 +1,30 @@
+ru:
+  application:
+    not_authenticated:
+      need_login: 'Необходимо войти'
+  cards:
+    create:
+      c_card: 'Новая карта создана!'
+    update:
+      u_card: 'Карта изменена'
+    destroy:
+      d_card: 'Карта удалена'
+    require_deck:
+      need_deck: 'Необходимо создать колоду'
+  decks:
+    create:
+      c_deck: 'Новая колода создано'
+  flashcards:
+  oauths:
+    callback:
+      login: "Зашли с %{provider}!"
+      fail: "Не получилось зайти с %{provider}!"
+  user_sessions:
+    create:
+      success: 'Успешный вход'
+      fail: 'Вы не смогли войти'
+    destroy:
+      logout: 'Пока!'
+  users:
+    create:
+      success: 'Вы зарегистрировались'
