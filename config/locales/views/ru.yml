@@ -22,7 +22,7 @@ ru:
       create_deck: 'Создать колоду'
   flashcards:
     form:
-      translate_word: 'Переведить слово'
+      translate_word: 'Переведите слово'
     index:
       text: 'Первый в мире удобный менеджер флеш-карточек. Именно так.'
       no_card: 'Нет карточек на проверку'

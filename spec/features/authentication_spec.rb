@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Authenrication", type: :feature do
+RSpec.feature 'Authenrication', type: :feature do
   context 'need login to visit root' do
     before { visit root_path }
 
@@ -24,7 +24,7 @@ RSpec.feature "Authenrication", type: :feature do
       before { click_link 'Выйти' }
 
       it 'logout' do
-        expect(page).to have_content 'Вы вышли!'
+        expect(page).to have_content 'Пока!'
       end
 
       context 'login' do

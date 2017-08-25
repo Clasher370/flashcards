@@ -13,7 +13,7 @@ ru:
       need_deck: 'Необходимо создать колоду'
   decks:
     create:
-      c_deck: 'Новая колода создано'
+      c_deck: 'Новая колода создана'
   flashcards:
   oauths:
     callback:

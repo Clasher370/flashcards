@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Decks", type: :feature do
+RSpec.feature 'Decks', type: :feature do
   let(:user) { create(:user) }
 
   context 'create' do
@@ -17,7 +17,7 @@ RSpec.feature "Decks", type: :feature do
       context 'without name' do
         before { click_button }
 
-        it { expect(page).to have_content "can't be blank" }
+        it { expect(page).to have_content 'Заполни это поле' }
       end
 
       context 'with name' do

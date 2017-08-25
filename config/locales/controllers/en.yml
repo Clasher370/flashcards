@@ -27,4 +27,4 @@ en:
       logout: 'Bye!!!'
   users:
     create:
-      success: 'Вы зарегистрировались'
+      success: 'Success sign up'
