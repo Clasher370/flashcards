@@ -1,2 +1,57 @@
 ru:
-  flashcard: 'Флэшкарточкер'
+  cards:
+    form:
+    edit:
+      change: 'Изменить карту'
+    index:
+      deck: 'Колода'
+      word: 'Слово'
+      translation: 'Перевод'
+      review_date: 'Дата проверки'
+    new:
+      new_card: 'Новая карта'
+  cards_mailer:
+    pending_cards_notification:
+      card_to_review: 'Есть карты на проверку!'
+  decks:
+    index:
+      all_decks: 'Колоды'
+      deck_name: 'Название колоды'
+    new:
+      add_deck: 'Добавить колоду'
+      create_deck: 'Создать колоду'
+  flashcards:
+    form:
+      translate_word: 'Переведить слово'
+    index:
+      text: 'Первый в мире удобный менеджер флеш-карточек. Именно так.'
+      no_card: 'Нет карточек на проверку'
+      add_card: 'Добавить карточку'
+  layouts:
+    header:
+      title: 'Флэшкарточкер'
+      my_cards: 'Мои карты'
+      decks: 'Колоды'
+      add_deck: 'Добавить колоду'
+      cards: 'Карты'
+      add_card: 'Добавить карту'
+      user_edit: 'Редактировать'
+      exit: 'Выйти'
+      lang_en: 'Английский'
+      lang_ru: 'Русский'
+      sign_up: 'Зарегистрироваться'
+      login: 'Войти'
+    application:
+      title: 'Флэшкарточкер'
+  user_sessions:
+    new:
+      enter: 'Вход'
+      twitter: 'Вход через Twitter'
+    form:
+      enter: 'Вход'
+  users:
+    form:
+    edit:
+      edit_user: 'Редактировать'
+    new:
+      sign_up: 'Регистрация'
