@@ -1,3 +1,4 @@
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
@@ -7,7 +8,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @decks = current_user.decks
   end
 
   def create

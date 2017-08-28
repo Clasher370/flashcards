@@ -3,6 +3,6 @@
     <%= f.input :locale, collection: I18n.available_locales %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
-    <%= f.input :current_deck_id, collection: @decks if @decks %>
+    <%= f.input :current_deck_id, collection: current_user.decks if current_user %>
     <%= f.button :submit %>
 <% end %>
