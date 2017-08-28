@@ -1,9 +1,7 @@
-<p>
-  Первый в мире удобный менеджер флеш-карточек. Именно так.
-</p>
+<p><%= t('.text') %></p>
 <% if @card.nil? %>
-    <p>Нет карточек на проверку</p>
-    <%= link_to 'Добавить карточку', new_card_path, class: 'btn btn-info' %>
+    <p><%= t('.no_card') %>></p>
+    <%= link_to t('.add_card'), new_card_path, class: 'btn btn-info' %>
 <% else %>
   <%= render 'form' %>
 <% end %>

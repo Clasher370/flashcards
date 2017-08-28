@@ -1,0 +1,78 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  cards:
+    form:
+    edit:
+      change: 'Change card'
+    index:
+      deck: 'Deck'
+      word: 'Word'
+      translation: 'Translation'
+      review_date: 'Review date'
+    new:
+      new_card: 'New card'
+  cards_mailer:
+    pending_cards_notification:
+      card_to_review: 'You have cards to review!'
+  decks:
+    index:
+      all_decks: 'All decks'
+      deck_name: 'Deck name'
+    new:
+      add_deck: 'Add deck'
+      create_deck: 'Create deck'
+  flashcards:
+    form:
+      translate_word: 'Translate word'
+    index:
+      text: 'First in the world manager for flashcards. Yes it is!'
+      no_card: 'No card for review'
+      add_card: 'Add card'
+  layouts:
+    header:
+      title: 'Flashcards'
+      my_cards: 'My cards'
+      decks: 'Decks'
+      add_deck: 'Add deck'
+      cards: 'Cards'
+      add_card: 'Add card'
+      user_edit: 'Edit'
+      exit: 'Logout'
+      lang_en: 'English'
+      lang_ru: 'Russian'
+      sign_up: 'Sign up'
+      login: 'Login'
+    application:
+      title: 'Flashcards'
+  user_sessions:
+    new:
+      enter: 'Login'
+      twitter: 'Login with Twitter'
+    form:
+      enter: 'Enter'
+  users:
+    form:
+    edit:
+      edit_user: 'Edit'
+    new:
+      sign_up: 'Sign up'

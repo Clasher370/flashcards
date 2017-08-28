@@ -43,6 +43,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'damerau-levenshtein'
 gem 'whenever', require: false
+gem 'http_accept_language'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

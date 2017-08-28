@@ -1,5 +1,5 @@
 <div class="card">
-  <p>Переведите слово</p>
+  <p><%= t('.translate_word') %></p>
   <p><%= @card.translated_text %></p>
   <%= image_tag @card.image.url.to_s, class: 'card_image' if @card.image.url %>
   <%= form_tag compare_path do %>

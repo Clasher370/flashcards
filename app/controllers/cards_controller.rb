@@ -21,7 +21,7 @@ class CardsController < ApplicationController
     @card = current_user.cards.build(card_params)
 
     if @card.save
-      redirect_to cards_path, notice: 'Новая карта создана'
+      redirect_to cards_path, notice: t('.c_card')
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to cards_path, notice: 'Карта изменена'
+      redirect_to cards_path, notice: t('.u_card')
     else
       render 'edit'
     end
@@ -38,7 +38,7 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
 
-    redirect_to cards_path, notice: 'Карта удалена'
+    redirect_to cards_path, notice: t('.d_card')
   end
 
   private
@@ -53,7 +53,7 @@ class CardsController < ApplicationController
 
   def require_deck
     if current_user.decks.empty?
-      redirect_to new_deck_path, notice: 'Необходимо создать колоду'
+      redirect_to new_deck_path, notice: t('.need_deck')
     end
   end
 end

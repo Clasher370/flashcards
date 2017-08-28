@@ -1,0 +1,30 @@
+en:
+  application:
+    not_authenticated:
+      need_login: 'You need login'
+  cards:
+    create:
+      c_card: 'New card create!'
+    update:
+      u_card: 'Card changed'
+    destroy:
+      d_card: 'You destroy cаrd'
+    require_deck:
+      need_deck: 'You need create deck'
+  decks:
+    create:
+      c_deck: 'New deck cheated'
+  flashcards:
+  oauths:
+    callback:
+      login: "Logged in from %{provider}!"
+      fail: "Failed to login from %{provider}!"
+  user_sessions:
+    create:
+      success: 'Yahoo you in!'
+      fail: 'Some thing wrong!'
+    destroy:
+      logout: 'Bye!!!'
+  users:
+    create:
+      success: 'Success sign up'

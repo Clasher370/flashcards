@@ -14,7 +14,7 @@ RSpec.feature 'Cards', type: :feature do
       click_button
     end
 
-    it { expect(page).to have_content 'Новая карта создана' }
+    it { expect(page).to have_content 'Новая карта создана!' }
     it 'belongs to desk' do
       visit cards_path
       expect(page).to have_content 'Colors'
@@ -51,7 +51,7 @@ RSpec.feature 'Cards', type: :feature do
           click_link 'Delete'
         end
 
-        it { expect(page).to have_content 'Карта удалена'}
+        it { expect(page).to have_content 'Карта удалена' }
         it { expect(Card.count).to eq 0 }
       end
     end

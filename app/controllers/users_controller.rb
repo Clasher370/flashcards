@@ -1,3 +1,4 @@
+# app/controllers/users_controller.rb
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
@@ -6,14 +7,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @decks = current_user.decks
+    @user = current_user
   end
 
   def create
     @user = User.new(users_params)
     if @user.save
       auto_login(@user)
-      redirect_to root_path, notice: 'Вы зарегистрировались'
+      redirect_to root_path, notice: t('.success')
     else
       render :new
     end
@@ -30,6 +31,6 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_deck_id, :locale)
   end
 end
