@@ -5,7 +5,18 @@
   <%= form_tag compare_path do %>
       <%= hidden_field_tag :id, @card.id %>
       <%= hidden_field_tag :session_try, @try %>
+      <%= hidden_field_tag :timer %>
       <%= text_field_tag :user_text %>
       <%= button_tag %>
   <% end %>
 </div>
+<script>
+    var count=0;
+
+    setInterval(timer, 1000);
+
+    function timer() {
+        count = count + 1;
+        document.getElementById("timer").value = count;
+    }
+</script>
