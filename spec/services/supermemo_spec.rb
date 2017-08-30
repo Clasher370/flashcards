@@ -1,53 +1,53 @@
 require 'rails_helper'
 
 describe SuperMemo do
-  let(:card) { create(:card) }
-  let(:memo) { SuperMemo.new(card.id, nil, nil) }
+  describe 'perfect' do
+    let(:card) { create(:card, review_stage: 5, easiness: 3.0) }
 
-  describe '#update_card' do
-    context 'if incorrect answer' do
-      before { memo.update_card(card, 5) }
-
-      it { expect_time_eq(card.review_date, 1.hour.since) }
-      it { expect(card.easiness).to eq 2.6 }
-      it { expect(card.review_stage).to eq 2 }
+    before do
+      SuperMemo.new(card.id, 'home', 14).algorithm
+      card.reload
     end
 
-    context 'if correct answer' do
-      before { memo.update_card(card, 2) }
+    it { expect_time_eq(card.review_date, 12.hour.since) }
+    it { expect(card.easiness).to eq 3.1 }
+    it { expect(card.review_stage).to eq 6 }
+  end
 
-      it { expect_time_eq(card.review_date, 1.hour.since) }
-      it { expect(card.easiness).to eq 2.5 }
-      it { expect(card.review_stage).to eq 1 }
+  describe 'good' do
+    let(:card) { create(:card, review_stage: 7, easiness: 3.5) }
+
+    before do
+      SuperMemo.new(card.id, 'home', 46).algorithm
+      card.reload
     end
+
+    it { expect_time_eq(card.review_date, 21.hour.since) }
+    it { expect(card.easiness).to eq 3.36 }
+    it { expect(card.review_stage).to eq 8 }
   end
 
-  describe '#compare' do
-    it { expect(memo.compare('cat', 'cat')).to eq 0 }
-    it { expect(memo.compare('cat', 'ca')).to eq 1 }
-    it { expect(memo.compare('cat', 'c')).to eq 2 }
-    it { expect(memo.compare('cat', '')).to eq 3 }
+  describe 'bad' do
+    let(:card) { create(:card, review_stage: 10, easiness: 4.5) }
+
+    before do
+      SuperMemo.new(card.id, 'emoh', 99).algorithm
+      card.reload
+    end
+
+    it { expect_time_eq(card.review_date, 1.hour.since) }
+    it { expect(card.easiness).to eq 4.5 }
+    it { expect(card.review_stage).to eq 1 }
   end
 
-  describe '#quality_of_repetition' do
-    it { expect(memo.quality_of_repetition(3, 1)).to eq(0) }
-    it { expect(memo.quality_of_repetition(0, 15)).to eq(5) }
-    it { expect(memo.quality_of_repetition(0, 45)).to eq(4) }
-    it { expect(memo.quality_of_repetition(0, 46)).to eq(3) }
-    it { expect(memo.quality_of_repetition(1, 1)).to eq(2) }
-    it { expect(memo.quality_of_repetition(2, 1)).to eq(1) }
-  end
+  describe 'hard card have 1.3 easiness' do
+    let(:card) { create(:card, review_stage: 5, easiness: 1.0) }
 
-  describe '#update_easiness' do
-    it { expect(memo.update_easiness(card, 5)).to eq 2.6 }
-    it { expect(memo.update_easiness(card, 4)).to eq 2.5 }
-    it { expect(memo.update_easiness(card, 3)).to eq 2.36 }
-  end
+    before do
+      SuperMemo.new(card.id, 'home', 99).algorithm
+      card.reload
+    end
 
-  describe '#update_interval' do # default easiness value 2.5
-    it { expect_time_eq(memo.update_interval(card, 1), 1.hour.since) }
-    it { expect_time_eq(memo.update_interval(card, 2), 6.hour.since) }
-    it { expect_time_eq(memo.update_interval(card, 3), 5.hour.since) }
-    it { expect_time_eq(memo.update_interval(card, 4), 8.hour.since) }
+    it { expect(card.easiness).to eq 1.3 }
   end
 end

@@ -1,4 +1,3 @@
-#
 class SuperMemo
   def initialize(id, user_text, timer)
     @card = Card.find(id)
@@ -12,6 +11,8 @@ class SuperMemo
     update_card(@card, quality)
     create_notice(@card, @user_text, quality)
   end
+
+  private
 
   def update_card(card, quality)
     current_stage = card.review_stage
@@ -39,7 +40,7 @@ class SuperMemo
   end
 
   def update_easiness(card, quality)
-    card.update(easiness: 1.3) if card.easiness < 1.3
+    return 1.3 if card.easiness < 1.3
 
     card.easiness + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
   end
