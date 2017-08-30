@@ -14,12 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-var count=0;
-
-setInterval(timer, 1000);
-
-function timer() {
-  count = count + 1;
-  document.getElementById("timer").value = count;
-}
