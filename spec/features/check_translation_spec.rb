@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "CheckTranslation", type: :feature do
+RSpec.feature 'CheckTranslation', type: :feature do
   let(:card) { create(:card) }
 
   describe 'root page' do
@@ -20,22 +20,14 @@ RSpec.feature "CheckTranslation", type: :feature do
       it { expect(page).not_to have_content 'дом' }
     end
 
-    context 'enter wrong or empty answer' do
-      it 'first time, left 2 try' do
+    context 'if answer is wrong' do
+      before do
+        fill_in :user_text, with: 'emoh'
         click_button 'Button'
-        expect(page).to have_content 'У Вас осталась 2 попытки.'
       end
 
-      it 'second time, left 1 try' do
-        2.times { click_button 'Button' }
-        expect(page).to have_content 'У Вас осталась 1 попытки.'
-      end
-
-      it 'third time, another card for check' do
-        3.times { click_button 'Button' }
-        expect(page).to have_content 'Вы ответили неправильно.'
-        expect(page).not_to have_content 'дом'
-      end
+      it { expect(page).to have_content 'Ваш ответ emoh неправильный.' }
+      it { expect(page).to have_content 'Ваш ответ emoh неправильный. Правильный ответ дом - home.' }
     end
   end
 end
