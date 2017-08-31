@@ -8,8 +8,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
 gem 'pg'
+gem 'rails', '~> 5.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -34,24 +34,25 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem "interactor"
-gem 'simple_form'
-gem 'nokogiri'
-gem 'sorcery'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog-aws'
 gem 'damerau-levenshtein'
-gem 'whenever', require: false
-gem 'http_accept_language'
+gem 'interactor'
 gem 'rollbar'
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'mini_magick'
+gem 'http_accept_language'
+gem 'nokogiri'
+gem 'simple_form'
+gem 'sorcery'
+gem 'newrelic_rpm'
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'dotenv-rails'
 end
 
 group :test do
