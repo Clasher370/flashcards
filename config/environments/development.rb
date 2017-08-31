@@ -29,6 +29,13 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  # mail gun
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['MAIL_GUN_SECRET_KEY'],
+    domain: ENV['MAIL_GUN_DOMAIN']
+  }
+
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
