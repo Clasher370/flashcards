@@ -1,14 +1,11 @@
+# app/controllers/flashcards_controller.rb
 class FlashcardsController < ApplicationController
   def index
-    set_card = SetCardOnIndex.call(user: current_user, session: session[:card])
-    @card = set_card.card
-    @try = session[:try]
+    @card = SetCardOnIndex.call(user: current_user, session: session[:card]).card
   end
 
   def compare
-    check_card = CheckTranslation.call(params)
-    session[:card] = check_card.card
-    session[:try] = check_card.session_try
-    redirect_to root_path, notice: check_card.notice
+    check_card = SuperMemo.new(params[:id], params[:user_text], params[:timer]).algorithm
+    redirect_to root_path, notice: check_card
   end
 end

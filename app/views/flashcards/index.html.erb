@@ -1,6 +1,6 @@
 <p><%= t('.text') %></p>
 <% if @card.nil? %>
-    <p><%= t('.no_card') %>></p>
+    <p><%= t('.no_card') %></p>
     <%= link_to t('.add_card'), new_card_path, class: 'btn btn-info' %>
 <% else %>
   <%= render 'form' %>

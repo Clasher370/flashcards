@@ -17,7 +17,7 @@ describe CheckTranslation do
         context 'card attribute change' do
           before { card.reload }
 
-          it { expect_review_date_eq(card, 12.hour.since) }
+          it { expect_time_eq(card.review_date, 12.hour.since) }
           it { expect(card.review_stage.to_i).to eq 2 }
         end
       end
