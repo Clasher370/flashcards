@@ -13,7 +13,7 @@ RSpec.feature 'CheckTranslation', type: :feature do
     context 'enter answer and click button' do
       before do
         fill_in :user_text, with: 'home'
-        click_button 'Button'
+        click_button
       end
 
       it { expect(page).to have_content 'Вы ответили правильно.' }
@@ -23,10 +23,9 @@ RSpec.feature 'CheckTranslation', type: :feature do
     context 'if answer is wrong' do
       before do
         fill_in :user_text, with: 'emoh'
-        click_button 'Button'
+        click_button
       end
 
-      it { expect(page).to have_content 'Ваш ответ emoh неправильный.' }
       it { expect(page).to have_content 'Ваш ответ emoh неправильный. Правильный ответ дом - home.' }
     end
   end
