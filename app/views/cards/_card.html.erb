@@ -1,0 +1,11 @@
+<tr>
+  <td><%= card.deck.name if card.deck %></td>
+  <td><%= card.original_text %></td>
+  <td><%= card.translated_text %></td>
+  <td><%= card.review_date.strftime("%d/%m/%Y") %></td>
+  <td><%= link_to 'Edit', edit_card_path(card) %></td>
+  <td><%= link_to 'Delete', card_path(card),
+                  method: :delete,
+                  remote: true,
+                  data: { confirm: 'Are you sure?' } %></td>
+</tr>

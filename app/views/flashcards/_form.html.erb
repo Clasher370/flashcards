@@ -1,12 +1,14 @@
-<div class="card">
+<% if @card.nil? %>
+  <p><%= t('.no_card') %></p>
+  <%= link_to t('.add_card'), new_card_path, class: 'btn btn-info' %>
+<% else %>
   <p><%= t('.translate_word') %></p>
   <p><%= @card.translated_text %></p>
   <%= image_tag @card.image.url.to_s, class: 'card_image' if @card.image.url %>
-  <%= form_tag compare_path do %>
+  <%= form_tag compare_path, remote: true do %>
       <%= hidden_field_tag :id, @card.id %>
-      <%= hidden_field_tag :session_try, @try %>
       <%= hidden_field_tag :timer %>
       <%= text_field_tag :user_text %>
       <%= button_tag %>
   <% end %>
-</div>
+<% end %>

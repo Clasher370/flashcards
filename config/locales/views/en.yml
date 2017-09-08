@@ -44,10 +44,10 @@ en:
   flashcards:
     form:
       translate_word: 'Translate word'
-    index:
-      text: 'First in the world manager for flashcards. Yes it is!'
       no_card: 'No card for review'
       add_card: 'Add card'
+    index:
+      text: 'First in the world manager for flashcards. Yes it is!'
   layouts:
     header:
       title: 'Flashcards'
