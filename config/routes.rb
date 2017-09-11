@@ -4,20 +4,18 @@ Rails.application.routes.draw do
       resources :users, only: [:new, :create]
       get 'signup' => 'users#new' # , :as => :signup
       get 'login' => 'user_sessions#new' # , :as => :login
+      resources :user_sessions, only: :create
     end
 
     namespace :dashboard do
       resources :users, only: [:edit, :update]
-      post 'logout' => 'user_sessions#destroy'
+      post 'logout' => 'user_sessions#destroy' # , :as => :logout
+      resources :cards, :decks
     end
 
     get 'oauths/oauth'
 
     get 'oauths/callback'
-
-    resources :user_sessions
-    resources :cards
-    resources :decks
 
     root to: 'flashcards#index'
     post 'compare' => 'flashcards#compare'
