@@ -22,7 +22,7 @@ module Dashboard
       @card = current_user.cards.build(card_params)
 
       if @card.save
-        redirect_to cards_path, notice: t('.c_card')
+        redirect_to dashboard_cards_path, notice: t('.c_card')
       else
         render 'new'
       end
@@ -30,7 +30,7 @@ module Dashboard
 
     def update
       if @card.update(card_params)
-        redirect_to cards_path, notice: t('.u_card')
+        redirect_to dashboard_cards_path, notice: t('.u_card')
       else
         render 'edit'
       end
@@ -39,7 +39,7 @@ module Dashboard
     def destroy
       @card.destroy
 
-      redirect_to cards_path, notice: t('.d_card')
+      redirect_to dashboard_cards_path, notice: t('.d_card')
     end
 
     private
