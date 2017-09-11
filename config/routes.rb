@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /ru|en/ do
+    root to: 'dashboard/flashcards#index'
+
     namespace :home do
       resources :users, only: [:new, :create]
       get 'signup' => 'users#new' # , :as => :signup
@@ -8,23 +10,18 @@ Rails.application.routes.draw do
     end
 
     namespace :dashboard do
+      post 'compare' => 'flashcards#compare'
       resources :users, only: [:edit, :update]
-      post 'logout' => 'user_sessions#destroy' # , :as => :logout
       resources :cards, :decks
+      post 'logout' => 'user_sessions#destroy' # , :as => :logout
     end
 
-    get 'oauths/oauth'
-
-    get 'oauths/callback'
-
-    root to: 'flashcards#index'
-    post 'compare' => 'flashcards#compare'
-
-
-    post 'oauth/callback' => 'oauths#callback'
-    get 'oauth/callback' => 'oauths#callback'
-    get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
-
-    post 'current' => 'decks#current_deck'
+    scope module: 'home' do
+      get 'oauths/oauth'
+      get 'oauths/callback'
+      post 'oauth/callback' => 'oauths#callback'
+      get 'oauth/callback' => 'oauths#callback'
+      get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
+    end
   end
 end
