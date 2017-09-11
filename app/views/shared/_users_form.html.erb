@@ -1,4 +1,4 @@
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for [namespace, @user] do |f| %>
     <%= f.input :email %>
     <%= f.input :locale, collection: I18n.available_locales %>
     <%= f.input :password %>
