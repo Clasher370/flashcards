@@ -20,7 +20,7 @@ Style/AlignArray:
                  Align the elements of an array literal if they span more than
                  one line.
   StyleGuide: '#align-multiline-arrays'
-  Enabled: true
+  Enabled: false
 
 Style/AlignHash:
   Description: >-
@@ -1087,7 +1087,7 @@ Lint/AmbiguousRegexpLiteral:
 Lint/AssignmentInCondition:
   Description: "Don't use assignment in conditions."
   StyleGuide: '#safe-assignment-in-condition'
-  Enabled: true
+  Enabled: false
 
 Lint/BlockAlignment:
   Description: 'Align block ends correctly.'

@@ -1,12 +1,9 @@
 module Dashboard
   class CardsController < ApplicationController
-    before_action :set_card, only: [:show, :edit, :update, :destroy]
+    before_action :set_card, only: [:edit, :update, :destroy]
 
     def index
       @cards = current_user.cards
-    end
-
-    def show
     end
 
     def new
@@ -50,12 +47,6 @@ module Dashboard
 
     def card_params
       params.require(:card).permit(:deck_id, :original_text, :translated_text, :review_date, :review_stage, :image, :remote_image_url)
-    end
-
-    def require_deck
-      if current_user.decks.empty?
-        redirect_to new_deck_path, notice: t('.need_deck')
-      end
     end
   end
 end
