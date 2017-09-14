@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /ru|en/ do
-    get 'oauths/oauth'
+    root to: 'dashboard/flashcards#index'
 
-    get 'oauths/callback'
+    namespace :home do
+      resources :users, only: [:new, :create]
+      get 'signup' => 'users#new' # , :as => :signup
+      get 'login' => 'user_sessions#new' # , :as => :login
+      resources :user_sessions, only: :create
+    end
 
-    resources :user_sessions
-    resources :users
-    resources :cards
-    resources :decks
+    namespace :dashboard do
+      post 'compare' => 'flashcards#compare'
+      resources :users, only: [:edit, :update]
+      resources :cards, :decks
+      post 'logout' => 'user_sessions#destroy' # , :as => :logout
+    end
 
-    root to: 'flashcards#index'
-    post 'compare' => 'flashcards#compare'
-
-    get 'login' => 'user_sessions#new', :as => :login
-    post 'logout' => 'user_sessions#destroy', :as => :logout
-    get 'signup' => 'users#new', :as => :signup
-
-    post 'oauth/callback' => 'oauths#callback'
-    get 'oauth/callback' => 'oauths#callback'
-    get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
-
-    post 'current' => 'decks#current_deck'
+    scope module: 'home' do
+      get 'oauths/oauth'
+      get 'oauths/callback'
+      post 'oauth/callback' => 'oauths#callback'
+      get 'oauth/callback' => 'oauths#callback'
+      get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
+    end
   end
 end

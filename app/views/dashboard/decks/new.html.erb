@@ -1,6 +1,6 @@
 <p><%= t('.add_deck') %></p>
 
-<%= simple_form_for @deck do |f| %>
+<%= simple_form_for [:dashboard, @deck] do |f| %>
   <%= f.input :name %>
   <%= f.button :submit, t('.create_deck') %>
 <% end %>

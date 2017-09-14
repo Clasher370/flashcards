@@ -1,32 +1,36 @@
 ru:
+  dashboard:
+    cards:
+      create:
+        c_card: 'Новая карта создана!'
+      update:
+        u_card: 'Карта изменена'
+      destroy:
+        d_card: 'Карта удалена'
+      require_deck:
+        need_deck: 'Необходимо создать колоду'
+    decks:
+      create:
+        c_deck: 'Новая колода создана'
+    flashcards:
+      correct: 'Вы ответили правильно.'
+      incorrect: "Ваш ответ %{user_text} неправильный. Правильный ответ %{translated_text} - %{original_text}."
+    user_sessions:
+      destroy:
+        logout: 'Пока!'
+  home:
+    oauths:
+      callback:
+        login: "Зашли с %{provider}!"
+        fail: "Не получилось зайти с %{provider}!"
+    user_sessions:
+      create:
+        success: 'Успешный вход'
+        fail: 'Вы не смогли войти'
+    users:
+      create:
+        success: 'Вы зарегистрировались'
   application:
     not_authenticated:
       need_login: 'Необходимо войти'
-  cards:
-    create:
-      c_card: 'Новая карта создана!'
-    update:
-      u_card: 'Карта изменена'
-    destroy:
-      d_card: 'Карта удалена'
-    require_deck:
-      need_deck: 'Необходимо создать колоду'
-  decks:
-    create:
-      c_deck: 'Новая колода создана'
-  flashcards:
-    correct: 'Вы ответили правильно.'
-    incorrect: "Ваш ответ %{user_text} неправильный. Правильный ответ %{translated_text} - %{original_text}."
-  oauths:
-    callback:
-      login: "Зашли с %{provider}!"
-      fail: "Не получилось зайти с %{provider}!"
-  user_sessions:
-    create:
-      success: 'Успешный вход'
-      fail: 'Вы не смогли войти'
-    destroy:
-      logout: 'Пока!'
-  users:
-    create:
-      success: 'Вы зарегистрировались'
+

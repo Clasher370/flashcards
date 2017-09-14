@@ -57,8 +57,8 @@ class SuperMemo
   end
 
   def create_notice(card, text, quality)
-    return I18n.t('flashcards.correct') if quality > 2
-    I18n.t('flashcards.incorrect', user_text: text,
+    return I18n.t('dashboard.flashcards.correct') if quality > 2
+    I18n.t('dashboard.flashcards.incorrect', user_text: text,
                                    translated_text: card.translated_text,
                                    original_text: card.original_text)
   end

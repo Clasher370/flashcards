@@ -6,7 +6,7 @@ RSpec.feature 'Cards', type: :feature do
       @user = create(:user)
       @deck = @user.decks.create(name: 'Colors')
       login(@user.email, 'secret')
-      visit new_card_path
+      visit new_dashboard_card_path
       select 'Colors', from: 'Deck'
       fill_in 'Original text', with: 'white'
       fill_in 'Translated text', with: 'белый'
@@ -16,7 +16,7 @@ RSpec.feature 'Cards', type: :feature do
 
     it { expect(page).to have_content 'Новая карта создана!' }
     it 'belongs to desk' do
-      visit cards_path
+      visit dashboard_cards_path
       expect(page).to have_content 'Colors'
     end
 
@@ -32,7 +32,7 @@ RSpec.feature 'Cards', type: :feature do
 
     context 'edit and delete' do
       before do
-        visit cards_path
+        visit dashboard_cards_path
       end
 
       context 'edit' do

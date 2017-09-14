@@ -9,7 +9,7 @@ RSpec.feature 'Authenrication', type: :feature do
 
   context 'signin' do
     before do
-      visit signup_path
+      visit home_signup_path
       fill_in 'Email', with: 'email@example.com'
       select 'ru', from: 'Locale'
       fill_in 'Password', with: 'secret'
