@@ -33,6 +33,11 @@ set :branch,        'deploy-1809'
 set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
+set :default_env, {
+    S3_KEY: ENV["S3_KEY"],
+    S3_SECRET_KEY: ENV["S3_SECRET_KEY"]
+}
+
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
@@ -72,7 +77,7 @@ namespace :deploy do
     end
   end
 
-  before :starting,     :check_revision
+  # before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
