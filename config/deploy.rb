@@ -24,7 +24,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 ## Defaults:
 # set :scm,           :git
-set :branch,        'deploy-1809'
+# set :branch,        'deploy-1809'
 # set :format,        :pretty
 # set :log_level,     :debug
 # set :keep_releases, 5
@@ -77,7 +77,7 @@ namespace :deploy do
     end
   end
 
-  # before :starting,     :check_revision
+  before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
