@@ -47,11 +47,19 @@ gem 'sorcery'
 gem 'newrelic_rpm'
 gem 'whenever', require: false
 gem 'mailgun-ruby', '~>1.1.6'
+gem 'dotenv-rails'
+
+group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
