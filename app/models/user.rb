@@ -16,5 +16,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true,
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
-  validates :locale, presence: true
+  validates :locale, presence: true,
+            inclusion: { in: I18n.available_locales.map(&:to_s) }
 end

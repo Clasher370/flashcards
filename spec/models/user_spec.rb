@@ -14,6 +14,11 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
+    it 'locale' do
+      user.locale = ''
+      expect(user).not_to be_valid
+    end
+
     it 'password' do
       user.password = ''
       expect(user).not_to be_valid

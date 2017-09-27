@@ -23,10 +23,10 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t('.lang_en'), home_login_path(locale: 'en') %></li>
-          <li><%= link_to t('.lang_ru'), home_login_path(locale: 'ru') %></li>
           <li><%= link_to t('.sign_up'), home_signup_path %></li>
           <li><%= link_to t('.login'), home_login_path %></li>
+          <li><%= link_to 'en', home_login_path(locale: 'en') %></li>
+          <li><%= link_to 'ru', home_login_path(locale: 'ru') %></li>
         <% end %>
       </ul>
     </div>
